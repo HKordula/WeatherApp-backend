@@ -110,12 +110,15 @@ public class WeatherService {
             }
         }
 
+        double averagePressure = Math.round((totalPressure / totalHours) * 100.0) / 100.0;
+        double averageSunshine = Math.round((totalSunshine / totalHours) * 100.0) / 100.0;
+
         return new WeatherSummaryDto(
-                totalPressure / totalHours,
-                totalSunshine / totalHours,
+                averagePressure,
+                averageSunshine,
                 minTemperature,
                 maxTemperature,
-                rainyHours > totalHours / 2 ? "z opadami" : "bez opadów"
+                rainyHours > totalHours / 2 ? "with rainfall" : "without rainfall"
         );
     }
 
